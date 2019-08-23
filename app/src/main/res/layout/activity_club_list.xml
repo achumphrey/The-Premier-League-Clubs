@@ -12,9 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/rv_list"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 

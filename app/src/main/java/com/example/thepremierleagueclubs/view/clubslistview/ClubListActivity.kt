@@ -25,29 +25,27 @@ class ClubListActivity : AppCompatActivity(), ClubView {
         Log.d("CLICKEDITEM", clubsModel.teams[0].strTeam)
 
         // initialize the adapter
-        /*
-        val adapter: MovieAdapter =
-            MovieAdapter(
-                moviePopular!!,
+        val adapter: ClubsListAdapter =
+            ClubsListAdapter(
+                clubsModel!!,
                 object :
-                    OnMovieClickLister {
-                    override fun onMovieClick(results: Results) {
+                    OnClubListClickLister {
+                    override fun onClubListClick(clubsModel: ClubsModel) {
 
-                        Log.d("CLICKEDITEM", results.title)
+                        Log.d("CLICKEDITEM", clubsModel.teams[0].strTeam)
                     }
-                })
+            })
 
-        rv_list.layoutManager = LinearLayoutManager(this@MoviesActivity)
+        rv_list.layoutManager = LinearLayoutManager(this@ClubListActivity)
         rv_list.adapter = adapter
-        */
-
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_club_list)
+
+
 
         presenter.onViewAttached(this)
     }

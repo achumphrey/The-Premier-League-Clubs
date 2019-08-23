@@ -7,6 +7,7 @@ import android.view.View
 import com.example.thepremierleagueclubs.R
 import com.example.thepremierleagueclubs.view.asynctask.ComplexAsynTaskOps
 import com.example.thepremierleagueclubs.view.clubslistview.ClubListActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),View.OnClickListener {
 
@@ -29,5 +30,8 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btn_get_prem.setOnClickListener(this)
+        btn_go_complex.setOnClickListener(this)
     }
 }
