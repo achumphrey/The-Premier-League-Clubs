@@ -7,6 +7,7 @@ import com.example.thepremierleagueclubs.R
 import com.example.thepremierleagueclubs.common.inflate
 import com.example.thepremierleagueclubs.common.loadImage
 import com.example.thepremierleagueclubs.model.clublist.ClubsModel
+import com.example.thepremierleagueclubs.model.clublist.Teams
 import kotlinx.android.synthetic.main.club_list_recyclerview.view.*
 
 
@@ -37,15 +38,15 @@ class ClubsListAdapter(private val clubsModel: ClubsModel, private val listener:
 //        holder.imgView.loadImage("http://image.tmdb.org/t/p/w185"
 //                + clubsModel.teams[position].strTeamLogo)
 
-        holder.bind(clubsModel, listener)
+        holder.bind(clubsModel.teams[position], listener)
     }
 }
 
 class ClubListViewHolder (view: View): RecyclerView.ViewHolder(view){
 
-    fun bind (clubsModel: ClubsModel, listener: OnClubListClickLister){
+    fun bind (teams: Teams, listener: OnClubListClickLister){
         itemView.setOnClickListener{
-            listener.onClubListClick(clubsModel)
+            listener.onClubListClick(teams)
         }
     }
 
@@ -59,5 +60,5 @@ class ClubListViewHolder (view: View): RecyclerView.ViewHolder(view){
 
 interface OnClubListClickLister{
 
-    fun onClubListClick(clubsModel: ClubsModel)
+    fun onClubListClick(teams: Teams)
 }

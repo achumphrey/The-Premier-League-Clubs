@@ -1,11 +1,12 @@
 package com.example.thepremierleagueclubs.presenter
 
 import android.util.Log
-import com.example.thepremierleagueclubs.common.Constants
+import com.example.thepremierleagueclubs.common.clubcommon.ClubConstants
 import com.example.thepremierleagueclubs.common.enqueue
 import com.example.thepremierleagueclubs.model.clublist.ClubsModel
-import com.example.thepremierleagueclubs.network.ClubsClientInterface
-import com.example.thepremierleagueclubs.network.ClubsRetrofitInstance
+import com.example.thepremierleagueclubs.network.clubsnetwork.ClubsClientInterface
+import com.example.thepremierleagueclubs.network.detailsnetwork.ClubDetailsClientInterface
+import com.example.thepremierleagueclubs.network.clubsnetwork.ClubsRetrofitInstance
 
 
 class ClubsPresenterImp: ClubsBasePresenter<ClubView>() {
@@ -18,7 +19,7 @@ class ClubsPresenterImp: ClubsBasePresenter<ClubView>() {
         val clubsClientInterface =
             ClubsRetrofitInstance().retrofitInstance.create(ClubsClientInterface::class.java)
 
-        val call = clubsClientInterface.getClubRecords(Constants.LEAGUE)
+        val call = clubsClientInterface.getClubRecords(ClubConstants.LEAGUE)
 
         // this is the extension function version of the callback enqueue
 
