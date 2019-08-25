@@ -10,12 +10,13 @@ import com.example.thepremierleagueclubs.R
 import com.example.thepremierleagueclubs.common.clubdetailcommon.ClubDetailsConstants
 import com.example.thepremierleagueclubs.model.clublist.ClubsModel
 import com.example.thepremierleagueclubs.model.clublist.Teams
-import com.example.thepremierleagueclubs.presenter.ClubView
-import com.example.thepremierleagueclubs.presenter.ClubsPresenterImp
+import com.example.thepremierleagueclubs.presenter.clubpresenter.ClubView
+import com.example.thepremierleagueclubs.presenter.clubpresenter.ClubsPresenterImp
 import com.example.thepremierleagueclubs.view.clubdetailsview.DetailsClubActivity
 import kotlinx.android.synthetic.main.activity_club_list.*
 
-class ClubListActivity : AppCompatActivity(), ClubView {
+class ClubListActivity : AppCompatActivity(),
+    ClubView {
 
     val presenter: ClubsPresenterImp = ClubsPresenterImp()
 
@@ -35,7 +36,7 @@ class ClubListActivity : AppCompatActivity(), ClubView {
                 object :
                     OnClubListClickLister {
                     override fun onClubListClick(teams: Teams) {
-            //            Log.d("CLICKEDITEM", clubsModel.teams[0].strTeam)
+                     //   Log.d("CLICKEDITEMINONCLICK", teams!!.strTeam)
 
                         val intent = Intent(this@ClubListActivity, DetailsClubActivity::class.java )
                         intent.putExtra(ClubDetailsConstants.INTENT_MESSAGE, teams.idTeam)
@@ -52,8 +53,6 @@ class ClubListActivity : AppCompatActivity(), ClubView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_club_list)
-
-
 
         presenter.onViewAttached(this)
     }

@@ -1,11 +1,10 @@
-package com.example.thepremierleagueclubs.presenter
+package com.example.thepremierleagueclubs.presenter.clubpresenter
 
 import android.util.Log
 import com.example.thepremierleagueclubs.common.clubcommon.ClubConstants
 import com.example.thepremierleagueclubs.common.enqueue
 import com.example.thepremierleagueclubs.model.clublist.ClubsModel
 import com.example.thepremierleagueclubs.network.clubsnetwork.ClubsClientInterface
-import com.example.thepremierleagueclubs.network.detailsnetwork.ClubDetailsClientInterface
 import com.example.thepremierleagueclubs.network.clubsnetwork.ClubsRetrofitInstance
 
 
@@ -40,7 +39,7 @@ class ClubsPresenterImp: ClubsBasePresenter<ClubView>() {
     }//END ONVIEWATTACHED
 }
 
-interface ClubView: ClubsBasePresenter.View{
+interface ClubView: ClubsBasePresenter.View {
 
     fun showLoading()
     fun showRepoResults(clubsModel:ClubsModel)

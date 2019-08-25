@@ -1,6 +1,7 @@
-package com.example.thepremierleagueclubs.presenter
+package com.example.thepremierleagueclubs.presenter.clubpresenter
 
 import androidx.annotation.CallSuper
+
 
 abstract class ClubsBasePresenter<T : ClubsBasePresenter.View> {
 
