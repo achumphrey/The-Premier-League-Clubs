@@ -53,8 +53,8 @@ class DetailsClubActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_club)
 
-        var animRotate: Animation = AnimationUtils.loadAnimation(getApplicationContext(),
-          R.anim.rotate);
+        var animRotate: Animation = AnimationUtils
+            .loadAnimation(getApplicationContext(), R.anim.rotate)
         img_view.visibility = View.VISIBLE
         img_view.startAnimation(animRotate)
 
