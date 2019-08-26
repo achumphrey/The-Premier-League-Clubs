@@ -19,7 +19,8 @@ class ComplexAsynTaskOps : AppCompatActivity() {
         btn_get_numbers.setOnClickListener {
 
            // gets a List of Strings
-            var arr = ed_enter_numbers.text.toString().split(",")
+            // the delimiter is comma followed by a whtitespace (", ")
+            var arr = ed_enter_numbers.text.toString().split(", ")
 
 
             //this gives a List of Strings
