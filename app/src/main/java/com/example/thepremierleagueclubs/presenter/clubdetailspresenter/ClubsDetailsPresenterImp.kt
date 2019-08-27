@@ -22,14 +22,11 @@ class ClubsDetailsPresenterImp: ClubsDetailsBasePresenter<ClubDetailsView>() {
         super.onViewAttached(view)
 
         view.showLoading()
-        val intent = Intent()
-        val movieId = intent.getIntExtra(ClubDetailsConstants.INTENT_MESSAGE, 0)
-    //    var movieId = ClubDetailsClientInterface.getClubID()
-
+        val teamId = view.getTeamId()//gets the teamId from the activity that received the intent.
         val clubDetatilsclientInterface = ClubDetailsRetrofitInstance()
             .retrofitInstance.create(ClubDetailsClientInterface::class.java)
 
-        val call = clubDetatilsclientInterface.getClubDetail(movieId)
+        val call = clubDetatilsclientInterface.getClubDetail(teamId)
 
         call.enqueue {
             onResponse = {
@@ -54,5 +51,7 @@ interface ClubDetailsView: ClubsDetailsBasePresenter.View{
 
     fun showLoading()
     fun showRepoResults(detailClubRecords: DetailedClubRecord)
+    fun getTeamId(): Int //teamId is passed through an intent which this presenter
+                        // does not have access to
 
 }

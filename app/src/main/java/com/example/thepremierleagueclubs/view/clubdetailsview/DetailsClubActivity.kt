@@ -23,16 +23,16 @@ import com.example.thepremierleagueclubs.presenter.clubpresenter.ClubsPresenterI
 import kotlinx.android.synthetic.main.activity_club_list.*
 import kotlinx.android.synthetic.main.activity_details_club.*
 
-class DetailsClubActivity : AppCompatActivity() {
+class DetailsClubActivity : AppCompatActivity() , ClubDetailsView {
 
-//    var animationDuration = 2000 //millisecods
+    val presenter: ClubsDetailsPresenterImp = ClubsDetailsPresenterImp()
 
-  //  , ClubDetailsView
-
-  /*  val presenter: ClubsDetailsPresenterImp = ClubsDetailsPresenterImp()
+    //this makes the intent value available to the presenter.
+    override fun getTeamId(): Int {
+        return intent.getIntExtra(ClubDetailsConstants.INTENT_MESSAGE, 0)
+    }
 
     override fun showLoading() {
-
         prgBar.visibility = View.VISIBLE
     }
 
@@ -48,7 +48,7 @@ class DetailsClubActivity : AppCompatActivity() {
         tv_team_name.text = detailClubRecords.teams[0].strTeam
         img_view.loadImage(detailClubRecords.teams[0].strTeamBadge)
     }
-*/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_club)
@@ -58,16 +58,16 @@ class DetailsClubActivity : AppCompatActivity() {
         img_view.visibility = View.VISIBLE
         img_view.startAnimation(animRotate)
 
-   //      presenter.onViewAttached(this)
+        presenter.onViewAttached(this)
 
-      // Val movieId = view.getClubId()
 
-        val movieId = intent.getIntExtra(ClubDetailsConstants.INTENT_MESSAGE, 0)
+/*
+        val teamId = intent.getIntExtra(ClubDetailsConstants.INTENT_MESSAGE, 0)
 
         val clubDetatilsClientInterface = ClubDetailsRetrofitInstance()
             .retrofitInstance.create(ClubDetailsClientInterface::class.java)
 
-        val call = clubDetatilsClientInterface.getClubDetail(movieId)
+        val call = clubDetatilsClientInterface.getClubDetail(teamId)
 
         call.enqueue {
             onResponse = {
@@ -87,5 +87,6 @@ class DetailsClubActivity : AppCompatActivity() {
                     error -> Log.d("Fail", error?.message)
             }
         }
+    }*/
     }
 }

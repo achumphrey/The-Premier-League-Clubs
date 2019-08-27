@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.thepremierleagueclubs.R
+import com.example.thepremierleagueclubs.common.clubcommon.ClubConstants
 import com.example.thepremierleagueclubs.common.clubdetailcommon.ClubDetailsConstants
 import com.example.thepremierleagueclubs.model.clublist.ClubsModel
 import com.example.thepremierleagueclubs.model.clublist.Teams
@@ -39,9 +40,8 @@ class ClubListActivity : AppCompatActivity(),
                      //   Log.d("CLICKEDITEMINONCLICK", teams!!.strTeam)
 
                         val intent = Intent(this@ClubListActivity, DetailsClubActivity::class.java )
-                        intent.putExtra(ClubDetailsConstants.INTENT_MESSAGE, teams.idTeam)
+                        intent.putExtra(ClubConstants.INTENT_MESSAGE, teams.idTeam)
                         startActivity(intent)
-
                     }
             })
 
