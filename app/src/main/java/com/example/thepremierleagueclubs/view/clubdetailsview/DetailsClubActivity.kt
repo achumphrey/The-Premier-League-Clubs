@@ -9,7 +9,8 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.example.thepremierleagueclubs.R
-import com.example.thepremierleagueclubs.common.clubdetailcommon.ClubDetailsConstants
+import com.example.thepremierleagueclubs.common.asynctaskcommon.changeTextColour
+import com.example.thepremierleagueclubs.common.clubdetailcommon.*
 import com.example.thepremierleagueclubs.common.enqueue
 import com.example.thepremierleagueclubs.common.loadImage
 import com.example.thepremierleagueclubs.model.clubdetails.DetailedClubRecord
@@ -24,6 +25,12 @@ import kotlinx.android.synthetic.main.activity_club_list.*
 import kotlinx.android.synthetic.main.activity_details_club.*
 
 class DetailsClubActivity : AppCompatActivity() , ClubDetailsView {
+
+    var strStadiumName = ""
+    var stadiumCapacity = ""
+    var stadiumLocation = ""
+    var yearFormed = ""
+    var teamName = ""
 
     val presenter: ClubsDetailsPresenterImp = ClubsDetailsPresenterImp()
 
@@ -41,11 +48,16 @@ class DetailsClubActivity : AppCompatActivity() , ClubDetailsView {
         prgBar.visibility = View.GONE
         Log.d("DetailActivity", detailClubRecords!!.teams[0].strTeam)
 
-        tv_stadium_capacity.text = "" + detailClubRecords.teams[0].intStadiumCapacity
-        tv_stadium.text = detailClubRecords.teams[0].strStadium
-        tv_stadium_location.text = detailClubRecords.teams[0].strStadiumLocation
-        tv_year_formed.text = "" + detailClubRecords.teams[0].intFormedYear
-        tv_team_name.text = detailClubRecords.teams[0].strTeam
+        stadiumCapacity = detailClubRecords.teams[0].intStadiumCapacity.toString()
+        tv_stadium_capacity.text = stadiumCapacity
+        strStadiumName = detailClubRecords.teams[0].strStadium
+        tv_stadium.text = strStadiumName
+        stadiumLocation = detailClubRecords.teams[0].strStadiumLocation
+        tv_stadium_location.text = stadiumLocation
+        yearFormed = detailClubRecords.teams[0].intFormedYear.toString()
+        tv_year_formed.text = yearFormed
+        teamName = detailClubRecords.teams[0].strTeam
+        tv_team_name.text = teamName
         img_view.loadImage(detailClubRecords.teams[0].strTeamBadge)
     }
 
@@ -59,6 +71,28 @@ class DetailsClubActivity : AppCompatActivity() , ClubDetailsView {
         img_view.startAnimation(animRotate)
 
         presenter.onViewAttached(this)
+
+        tv_stadium.setOnClickListener {
+
+            tv_stadium.changeBackgroudColour(strStadiumName)
+        }
+
+        tv_stadium_capacity.setOnClickListener {
+            tv_stadium_capacity.changeTextColour(stadiumCapacity)
+        }
+
+        tv_stadium_location.setOnClickListener {
+            tv_stadium_location.changeTextStyle(stadiumLocation)
+        }
+
+        tv_year_formed.setOnClickListener {
+            tv_year_formed.changeTextColourGreen(yearFormed)
+        }
+
+        tv_team_name.setOnClickListener {
+            tv_team_name.changeBackgroudColourGray(teamName)
+        }
+
 
 
 /*
